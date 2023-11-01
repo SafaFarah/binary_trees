@@ -7,7 +7,7 @@
  */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
-	binary_tree_t *temp;
+	binary_tree_t *prenode;
 
 	if (parent == NULL)
 		return (NULL);
@@ -16,9 +16,9 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 		parent->left = binary_tree_node(parent, value);
 		return (parent->left);
 	}
-	temp = parent->left;
+	prenode = parent->left;
 	parent->left = binary_tree_node(parent, value);
-	parent->left->left = temp;
-	temp->parent = parent->left;
+	parent->left->left = prenode;
+	prenode->parent = parent->left;
 	return (parent->left);
 }
